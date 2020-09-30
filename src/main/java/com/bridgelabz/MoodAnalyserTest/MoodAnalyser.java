@@ -9,15 +9,24 @@ public class MoodAnalyser {
 	public MoodAnalyser(String message) {
 		this.message = message;
 	}
-
-	public String analyseMood() {
-		try {
+ 
+	public void checkEmpty() throws MoodAnalysisException {
+		if(message.length()==0)
+			throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY ,"Enter Proper Mood");
+	}
+	
+	public void checkNull() throws MoodAnalysisException {
+		if(message==null)
+			throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL ,"Enter Proper Mood");
+	}
+	
+	
+	public String analyseMood() throws MoodAnalysisException {
+			checkNull();
+			checkEmpty();
 			if(message.contains("Sad"))
 				return "SAD";
-		}catch(NullPointerException e){
-		}
-		return "HAPPY";
-			
+			return "HAPPY";			
 	}
 
 	public void printWelcome() {
