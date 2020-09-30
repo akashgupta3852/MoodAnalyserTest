@@ -1,20 +1,24 @@
 package com.bridgelabz.MoodAnalyserTest;
 
-import static org.junit.Assert.assertTrue;
-
+import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Unit test for simple MoodAnalyser.
- */
-public class MoodAnalyserTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+
+
+public class MoodAnalyserTest {
+	
+	@Test
+    public void givenMessage_WhenSad_ShouldReturnSad() {
+		MoodAnalyser moodAnalyser = new MoodAnalyser();
+    	String mood = moodAnalyser.analyseMood("I am in Sad Mood");
+		Assert.assertEquals("SAD", mood);
     }
+	
+	@Test
+    public void givenMessage_WhenNotSad_ShouldReturnHappy() {
+		MoodAnalyser moodAnalyser = new MoodAnalyser();
+    	String mood = moodAnalyser.analyseMood("I am in Any Mood");
+		Assert.assertEquals("HAPPY", mood);
+    }
+    
 }
